@@ -25,6 +25,15 @@
       nsView.textContainer?.lineBreakMode = NSLineBreakMode(
         truncationMode: context.environment.truncationMode
       )
+
+      let linkAttributes: [NSAttributedString.Key : Any] = [
+          NSAttributedString.Key.foregroundColor: UIColor.green,
+          NSAttributedString.Key.underlineColor: UIColor.lightGray,
+          NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue
+      ]
+
+      nsView.linkTextAttributes = linkAttributes
+
       context.coordinator.openLink = onOpenLink ?? { context.environment.openURL($0) }
       textSizeViewModel.didUpdateTextView(nsView)
     }
